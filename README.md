@@ -4,17 +4,17 @@ Cross-platform type bridging for UIKit and AppKit.
 
 [![Swift](https://github.com/EmmanuelTsouris/UXKit/actions/workflows/swift.yml/badge.svg)](https://github.com/EmmanuelTsouris/UXKit/actions/workflows/swift.yml)
 [![Swift](https://img.shields.io/badge/Swift-6.2-orange.svg)](https://swift.org)
-[![Platforms](https://img.shields.io/badge/Platforms-iOS%20|%20macOS%20|%20tvOS%20|%20visionOS-lightgray.svg)](https://swift.org)
+[![Platforms](https://img.shields.io/badge/Platforms-iOS%20|%20macOS%20|%20tvOS%20|%20visionOS%20|%20Linux-lightgray.svg)](https://swift.org)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## Features
 
-- ✅ **UXColor** - Unified color type across iOS (UIColor) and macOS (NSColor)
-- ✅ **UXImage** - Unified image type across iOS (UIImage) and macOS (NSImage)
-- ✅ **UXFont** - Unified font type across iOS (UIFont) and macOS (NSFont)
-- ✅ **Zero overhead** - Just typealiases, no runtime cost
+- ✅ **UXColor** - Unified color type across iOS (UIColor), macOS (NSColor), and Linux (custom struct)
+- ✅ **UXImage** - Unified image type across iOS (UIImage), macOS (NSImage), and Linux (stub)
+- ✅ **UXFont** - Unified font type across iOS (UIFont), macOS (NSFont), and Linux (custom struct)
+- ✅ **Zero overhead** - Typealiases on Apple platforms, minimal structs on Linux
 - ✅ **Swift 6.2 strict concurrency** - All types are Sendable-safe
-- ✅ **Cross-platform** - Write once, run on iOS, macOS, tvOS, and visionOS
+- ✅ **Cross-platform** - Write once, run on iOS, macOS, tvOS, visionOS, and Linux
 
 ## Installation
 
@@ -104,8 +104,10 @@ let custom = UXFont(name: "Helvetica-Bold", size: 18)
 ## Requirements
 
 - Swift 6.2+
-- iOS 26.2+ / macOS 26.2+ / tvOS 26.2+ / visionOS 26.2+
+- iOS 26.2+ / macOS 26.2+ / tvOS 26.2+ / visionOS 26.2+ / Linux (Ubuntu 22.04+)
 - Xcode 26.3+ (for Apple platforms)
+
+**Note:** On Linux, UXColor and UXFont provide basic structs. UXImage is a stub (image loading not supported).
 
 ## Why UXKit?
 
