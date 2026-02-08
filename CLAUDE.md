@@ -62,6 +62,21 @@ Each bridge file handles one type:
 - **Image+Bridge.swift**: `UXImage` → `UIImage` / `NSImage` / stub struct
 - **Font+Bridge.swift**: `UXFont` → `UIFont` / `NSFont` / custom struct
 
+## File Size Rules
+
+Maximum 200 lines per Swift file. If a file approaches 200 lines, split it.
+
+Split strategy:
+- Extensions go in separate files
+- One type per file. One protocol per file
+- Tests mirror source
+
+Why: Every file in this repo will be read by AI agents. A 1000-line file
+burns context window on code irrelevant to the current task. Five 200-line
+files let the agent load only what it needs.
+
+Hard rule: If `wc -l` on any Swift file exceeds 250, the PR is rejected.
+
 ### Platform-Specific Behavior
 
 **Apple platforms:** Direct passthrough to native types (UIKit/AppKit)
