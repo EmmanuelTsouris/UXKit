@@ -21,9 +21,15 @@ func testColorCreation() {
 
 @Test("UXColor system colors are accessible")
 func testSystemColors() {
+    #if canImport(UIKit) || canImport(AppKit)
     let blue = UXColor.systemBlue
     // System color is accessible (non-optional type)
     _ = blue
+    #else
+    // On Linux, test basic colors
+    let blue = UXColor.blue
+    _ = blue
+    #endif
 }
 
 @Test("UXColor is UIColor on iOS/tvOS/visionOS")
