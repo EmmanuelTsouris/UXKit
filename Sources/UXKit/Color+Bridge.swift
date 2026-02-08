@@ -81,6 +81,18 @@ public struct UXColor: Sendable, Hashable {
     public static let cyan = UXColor(red: 0, green: 1, blue: 1, alpha: 1)
     public static let magenta = UXColor(red: 1, green: 0, blue: 1, alpha: 1)
     public static let gray = UXColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+
+    // System colors (approximating Apple's system colors)
+    public static let systemBlue = UXColor(red: 0.0, green: 0.478, blue: 1.0, alpha: 1)
+    public static let systemGreen = UXColor(red: 0.204, green: 0.78, blue: 0.349, alpha: 1)
+    public static let systemIndigo = UXColor(red: 0.345, green: 0.337, blue: 0.839, alpha: 1)
+    public static let systemOrange = UXColor(red: 1.0, green: 0.584, blue: 0.0, alpha: 1)
+    public static let systemPink = UXColor(red: 1.0, green: 0.176, blue: 0.333, alpha: 1)
+    public static let systemPurple = UXColor(red: 0.686, green: 0.322, blue: 0.871, alpha: 1)
+    public static let systemRed = UXColor(red: 1.0, green: 0.231, blue: 0.188, alpha: 1)
+    public static let systemTeal = UXColor(red: 0.188, green: 0.69, blue: 0.78, alpha: 1)
+    public static let systemYellow = UXColor(red: 1.0, green: 0.8, blue: 0.0, alpha: 1)
+    public static let systemGray = UXColor(red: 0.557, green: 0.557, blue: 0.576, alpha: 1)
 }
 
 #endif
