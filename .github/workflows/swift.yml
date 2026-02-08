@@ -20,9 +20,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Import Swift signing keys (Linux only)
+      if: runner.os == 'Linux'
+      run: |
+        wget -q -O - https://www.swift.org/keys/all-keys.asc | gpg --batch --import -
+
     - uses: swift-actions/setup-swift@v3
-      with:
-        skip-verify-signature: ${{ runner.os == 'Linux' }}
 
     - name: Get swift version
       run: swift --version
