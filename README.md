@@ -1,5 +1,7 @@
 # UXKit
 
+[![Swift](https://github.com/EmmanuelTsouris/UXKit/actions/workflows/swift.yml/badge.svg)](https://github.com/EmmanuelTsouris/UXKit/actions/workflows/swift.yml)
+
 Cross-platform type bridging (UXColor, UXImage, UXFont)
 
 ## Installation
