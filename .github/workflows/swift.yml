@@ -20,11 +20,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Import Swift GPG keys (Linux only)
-      if: runner.os == 'Linux'
-      run: curl --silent --retry 3 --location --fail https://swift.org/keys/all-keys.asc | gpg --import -
-
     - uses: swift-actions/setup-swift@v3
+      with:
+        skip-verify-signature: ${{ runner.os == 'Linux' }}
 
     - name: Get swift version
       run: swift --version
