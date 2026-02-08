@@ -127,4 +127,37 @@ func testColorTypeIOS() {
 - Platform-specific features that can't work cross-platform
 - Heavy dependencies
 - Advanced rendering or complex UI logic
+
+## Deferred Features
+
+### Target/Action Normalization
+
+**Status:** DEFERRED until pattern discovery shows UIKit control usage in an active project
+
+**Reversal condition:** If pattern discovery finds significant programmatic UIKit/AppKit control creation with target/action wiring in Garage 2 Galaxy or other active projects, revisit this decision and implement the pattern.
+
+**Current findings (2026-02-07):** Zero `UIButton.addTarget` or `NSButton.action =` patterns found across 558 game files.
+
+**Why deferred:**
+- Apps are SwiftUI-first (SwiftUI views + SpriteKit scenes)
+- SwiftUI's `Button(action:)` already provides superior closure-based API
+- AppKit implementation would require `objc_setAssociatedObject` trampolines (fighting the framework)
+- UXKit P0 is type bridging (Color, Image, Font) - types that leak into SwiftUI code
+
+**What NOT to implement:**
+- `onClick()` / `onChange()` methods for UIButton/NSButton/UITextField/NSTextField
+- Target/Action semantic wrappers
+- Control event bridging
+
+**Where the pattern lives:** Full implementation details in `ZEEZIDE_UXKIT_PATTERNS.md` (swift-package-ecosystem repo, Section 2: Target/Action Normalization)
+
+**How to check the gate:** Run pattern discovery on active project codebases looking for:
+```bash
+# Check for UIKit target/action patterns
+rg "addTarget.*action.*for:" --type swift
+rg "\.target\s*=.*\.action\s*=" --type swift
+
+# If significant usage found → implement pattern
+# If zero usage found → keep deferred
+```
 - SwiftUI components (this is UIKit/AppKit bridging only)
