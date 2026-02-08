@@ -49,4 +49,38 @@ import AppKit
 /// Uses `#if canImport(UIKit)` to automatically support Mac Catalyst.
 public typealias UXColor = NSColor
 
+#else
+// Linux and other platforms - provide a simple color struct
+
+/// Cross-platform color type.
+///
+/// On Linux and non-Apple platforms, provides a simple RGBA color representation.
+public struct UXColor: Sendable, Hashable {
+    public let red: Double
+    public let green: Double
+    public let blue: Double
+    public let alpha: Double
+
+    public init(red: Double, green: Double, blue: Double, alpha: Double = 1.0) {
+        self.red = red
+        self.green = green
+        self.blue = blue
+        self.alpha = alpha
+    }
+
+    // Common colors
+    public static let clear = UXColor(red: 0, green: 0, blue: 0, alpha: 0)
+    public static let black = UXColor(red: 0, green: 0, blue: 0, alpha: 1)
+    public static let white = UXColor(red: 1, green: 1, blue: 1, alpha: 1)
+    public static let red = UXColor(red: 1, green: 0, blue: 0, alpha: 1)
+    public static let green = UXColor(red: 0, green: 1, blue: 0, alpha: 1)
+    public static let blue = UXColor(red: 0, green: 0, blue: 1, alpha: 1)
+    public static let yellow = UXColor(red: 1, green: 1, blue: 0, alpha: 1)
+    public static let orange = UXColor(red: 1, green: 0.5, blue: 0, alpha: 1)
+    public static let purple = UXColor(red: 0.5, green: 0, blue: 0.5, alpha: 1)
+    public static let cyan = UXColor(red: 0, green: 1, blue: 1, alpha: 1)
+    public static let magenta = UXColor(red: 1, green: 0, blue: 1, alpha: 1)
+    public static let gray = UXColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+}
+
 #endif

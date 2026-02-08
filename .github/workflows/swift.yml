@@ -11,15 +11,22 @@ on:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
 
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
+    - uses: actions/checkout@v4
+
     - uses: swift-actions/setup-swift@v3
+
     - name: Get swift version
       run: swift --version
-    - uses: actions/checkout@v4
+
     - name: Build
       run: swift build -v
+
     - name: Run tests
       run: swift test -v

@@ -49,4 +49,21 @@ import AppKit
 /// Uses `#if canImport(UIKit)` to automatically support Mac Catalyst.
 public typealias UXImage = NSImage
 
+#else
+// Linux and other platforms - provide a minimal stub
+
+/// Cross-platform image type.
+///
+/// On Linux and non-Apple platforms, provides a minimal image representation.
+/// Note: Image loading is not supported on Linux.
+public struct UXImage: Sendable {
+    public let name: String?
+
+    public init?(named name: String) {
+        self.name = name
+        // On Linux, we can't actually load images
+        // This is just a stub for compilation
+    }
+}
+
 #endif

@@ -49,4 +49,28 @@ import AppKit
 /// Uses `#if canImport(UIKit)` to automatically support Mac Catalyst.
 public typealias UXFont = NSFont
 
+#else
+// Linux and other platforms - provide a minimal stub
+
+/// Cross-platform font type.
+///
+/// On Linux and non-Apple platforms, provides a minimal font representation.
+public struct UXFont: Sendable, Hashable {
+    public let name: String
+    public let size: Double
+
+    public init(name: String, size: Double) {
+        self.name = name
+        self.size = size
+    }
+
+    public static func systemFont(ofSize size: Double) -> UXFont {
+        UXFont(name: "System", size: size)
+    }
+
+    public static func boldSystemFont(ofSize size: Double) -> UXFont {
+        UXFont(name: "System-Bold", size: size)
+    }
+}
+
 #endif
